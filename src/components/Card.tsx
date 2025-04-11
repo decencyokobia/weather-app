@@ -31,7 +31,6 @@ const Card = () => {
     request
       .then((res) => {
         setCityWeather(res.data);
-        console.log(res.data);
         setIsLoading(false);
       })
       .catch((err) => {
@@ -66,6 +65,10 @@ const Card = () => {
   const newCity = (data: FieldValues) => {
     setCity(data.city);
   };
+
+  useEffect(() => {
+    localStorage.setItem("savedCity", JSON.stringify(city));
+  }, [city]);
 
   return (
     <div className={darkMode ? styles.bgDarkMode : styles.bgLightMode}>

@@ -33,7 +33,10 @@ const useWeather = () => {
   const [darkMode, setDarkMode] = useState(false);
   const [isLoading, setIsLoading] = useState(false);
   const [error, setError] = useState<string>("");
-  const [city, setCity] = useState("London");
+  const [city, setCity] = useState(() => {
+    const savedCity = localStorage.getItem('savedCity');
+    return savedCity ? JSON.parse(savedCity) : ["London"]
+  });
   const [cityWeather, setCityWeather] = useState<AllWeatherDetails>();
 
   const toggleMode = () => {
