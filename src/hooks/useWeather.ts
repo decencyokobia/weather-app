@@ -30,7 +30,10 @@ export interface AllWeatherDetails {
 }
 
 const useWeather = () => {
-  const [darkMode, setDarkMode] = useState(false);
+  const [darkMode, setDarkMode] = useState(()=> {
+    const savedMode = localStorage.getItem('savedMode');
+    return savedMode ? JSON.parse(savedMode) : false
+  });
   const [isLoading, setIsLoading] = useState(false);
   const [error, setError] = useState<string>("");
   const [city, setCity] = useState(() => {

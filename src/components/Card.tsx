@@ -70,6 +70,10 @@ const Card = () => {
     localStorage.setItem("savedCity", JSON.stringify(city));
   }, [city]);
 
+  useEffect(() => {
+    localStorage.setItem("savedMode", JSON.stringify(darkMode));
+  });
+
   return (
     <div className={darkMode ? styles.bgDarkMode : styles.bgLightMode}>
       <div className={styles.logoContainer}>
