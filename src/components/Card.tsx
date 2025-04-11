@@ -94,8 +94,15 @@ const Card = () => {
         Date: {today.toLocaleDateString()} at {today.toLocaleTimeString()}
       </h4>
       {isLoading && (
-        <div className="spinner-border" role="status">
-          <span className="visually-hidden">Loading...</span>
+        <div className="d-flex align-items-center">
+          <strong role="status" style={{ fontSize: "1.6rem", color: "green" }}>
+            Fetching weather data....
+          </strong>
+          <div
+            className="spinner-border ms-auto text-success"
+            style={{ width: "2rem", height: "2rem" }}
+            aria-hidden="true"
+          ></div>
         </div>
       )}
       {error && (
