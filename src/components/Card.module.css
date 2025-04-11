@@ -139,4 +139,10 @@ p {
     .logoContainer {
         margin-bottom: 2rem;
     }
+    .cardContainerLightMode {
+        margin-top: 30px;
+    }
+    .cardContainerDarkMode {
+        margin-top: 30px;
+    }
 }
