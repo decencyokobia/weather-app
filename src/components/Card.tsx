@@ -90,6 +90,9 @@ const Card = () => {
           <span className={styles.modeText}>{" Switch Mode"}</span>
         </div>
       </div>
+      <h4>
+        Date: {today.toLocaleDateString()} at {today.toLocaleTimeString()}
+      </h4>
       {isLoading && (
         <div className="spinner-border" role="status">
           <span className="visually-hidden">Loading...</span>
@@ -127,13 +130,12 @@ const Card = () => {
           <div className={styles.weatherDetails}>
             <h1>{cityWeather?.name}</h1>
             <h3>Condition: {cityWeather?.weather[0].description}</h3>
+            <h4>Feels like: {cityWeather?.main.feels_like}&deg;C</h4>
             <h4>Humidity: {cityWeather?.main.humidity}%</h4>
             <h4>Wind speed: {cityWeather?.wind.speed}m/s</h4>
             <h4>Wind direction: {cityWeather?.wind.deg}&deg;</h4>
             <h4>Clouds: {cityWeather?.clouds.all}%</h4>
-            <h4>
-              Date: {today.toLocaleDateString()} at {today.toLocaleTimeString()}
-            </h4>
+            <h4>Pressure: {cityWeather?.main.pressure} hPa</h4>
           </div>
         </div>
       )}

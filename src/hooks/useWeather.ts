@@ -12,6 +12,8 @@ interface Wind {
 interface Main {
   temp: number;
   humidity: number;
+  feels_like: number;
+  pressure: number;
 }
 
 export interface Weather {

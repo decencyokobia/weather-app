@@ -12,7 +12,7 @@ html {
     display: flex;
     align-items: center;
     justify-content: space-between;
-    margin-bottom: 7rem;
+    margin-bottom: 4rem;
 }
 
 .modeText {
@@ -58,7 +58,7 @@ p {
 
 .cardContainerLightMode {
     max-width: 30rem;
-    max-height: 38rem;
+    max-height: 39rem;
     width: 90vw;
     height: 45rem;
     border-radius: 1rem;
@@ -69,7 +69,7 @@ p {
 
 .cardContainerDarkMode {
     max-width: 30rem;
-    max-height: 38rem;
+    max-height: 39rem;
     width: 90vw;
     height: 45rem;
     border-radius: 1rem;
@@ -135,5 +135,8 @@ p {
 @media screen and (max-width: 679px){
     .modeText {
         display: none;
+    }
+    .logoContainer {
+        margin-bottom: 2rem;
     }
 }
