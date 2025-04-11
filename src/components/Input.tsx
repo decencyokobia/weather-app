@@ -36,8 +36,15 @@ const Input = ({ handleSubmission }: Props) => {
       {errors.city?.type === "minLength" && (
         <p className="text-danger">Must be at least 3 characters.</p>
       )}
-      <button type="submit" className="btn btn-outline-primary mt-2 btn-lg">
+      <button type="submit" className="btn btn-outline-primary mt-3 btn-lg">
         Search
+      </button>
+      <button
+        onClick={() => reset}
+        type="reset"
+        className="btn btn-danger mt-3 mx-2 btn-lg"
+      >
+        Clear
       </button>
     </form>
   );
