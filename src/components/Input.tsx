@@ -1,5 +1,6 @@
 import styles from "./Card.module.css";
 import { useForm } from "react-hook-form";
+import { IoSearch } from "react-icons/io5";
 
 interface InputData {
   city: string;
@@ -24,21 +25,38 @@ const Input = ({ handleSubmission }: Props) => {
 
   return (
     <form onSubmit={handleSubmit(onCheck)} className={styles.inputContainer}>
-      <input
-        placeholder="Enter city name"
-        type="text"
-        className={styles.inputField}
-        {...register("city", { required: true, minLength: 3 })}
-      />
-      {errors.city?.type === "required" && (
-        <p className="text-danger">city name required.</p>
-      )}
-      {errors.city?.type === "minLength" && (
-        <p className="text-danger">Must be at least 3 characters.</p>
-      )}
-      <button type="submit" className="btn btn-outline-primary mt-3 btn-lg">
-        Search
-      </button>
+      <fieldset
+        style={{ position: "relative" }}
+        className="d-flex align-items-center"
+      >
+        <input
+          id="inputCity"
+          placeholder="Enter city name"
+          type="text"
+          className={styles.inputField}
+          {...register("city", { required: true, minLength: 3 })}
+        />
+
+        <button
+          type="submit"
+          className="btn  btn-lg"
+          style={{
+            position: "absolute",
+            right: 0,
+            bottom: 0,
+          }}
+        >
+          <IoSearch size={25} color="blue" className={styles.searchIcon} />
+        </button>
+      </fieldset>
+      <div>
+        {errors.city?.type === "required" && (
+          <p className="text-danger">city name required.</p>
+        )}
+        {errors.city?.type === "minLength" && (
+          <p className="text-danger">Must be at least 3 characters.</p>
+        )}
+      </div>
       <button
         onClick={() => reset}
         type="reset"
