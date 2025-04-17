@@ -10,7 +10,6 @@ import ForcastCards from "./ForcastCards";
 import { WiHumidity } from "react-icons/wi";
 import { FaWind } from "react-icons/fa";
 import { BsClouds } from "react-icons/bs";
-import mapWeatherToIcon from "../utils/mapWeatherToIcon";
 
 const Card = () => {
   const {
@@ -29,9 +28,6 @@ const Card = () => {
   const date = new Date();
   const today = date.getDate();
   const month = date.toLocaleDateString("en-En", { month: "long" });
-
-  let condition = cityWeather && cityWeather.list[0].weather[0].main;
-  let icon = condition ? `src/SVG/${mapWeatherToIcon(condition)}` : "";
 
   useEffect(() => {
     setIsLoading(true);
@@ -146,7 +142,11 @@ const Card = () => {
             </div>
           </div>
           <div className={styles.weatherIcon}>
-            <img srcSet="" src={`${icon}`} alt={`weather icon`} />
+            <img
+              srcSet=""
+              src={`https://openweathermap.org/img/wn/${cityWeather.list[0].weather[0].icon}@2x.png`}
+              alt={`weather icon`}
+            />
 
             {/* <div className={styles.recommendation}>
               {cityWeather?.list[0].weather[0].description === "light rain" ? (
@@ -208,7 +208,7 @@ const Card = () => {
                 forcastDate={forecast.dt_txt.substring(5, 10)}
                 time={forecast.dt_txt.substring(10, 16)}
                 temperature={Math.floor(forecast.main.temp)}
-                srcImg={`src/SVG/${mapWeatherToIcon(forecast.weather[0].main)}`}
+                srcImg={`https://openweathermap.org/img/wn/${forecast.weather[0].icon}@2x.png`}
                 altImg={"weather icon"}
               />
             ))}
