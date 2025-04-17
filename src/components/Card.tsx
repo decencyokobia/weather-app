@@ -216,7 +216,7 @@ const Card = () => {
         </div>
       )}
 
-      <footer className={styles.footer}>&copy;deelovestocode</footer>
+      {/* <footer className={styles.footer}>&copy;deelovestocode</footer> */}
     </div>
   );
 };
