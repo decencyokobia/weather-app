@@ -230,14 +230,14 @@ p {
     border-radius: 1rem;
     padding: 0.5rem;
     display: flex;
-    font-size: 1.1rem;
     flex-direction: column;
     justify-content: center;
     align-items: center;
     margin-bottom: 2rem;
     margin-right: 1rem;
     text-wrap: nowrap;
-    line-height: 0.8;
+    line-height: 0.1;
+    gap: 1.1rem;
 }
 
 .forcastDateStyle {
