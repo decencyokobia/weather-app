@@ -10,7 +10,6 @@ import ForcastCards from "./ForcastCards";
 import { WiHumidity } from "react-icons/wi";
 import { FaWind } from "react-icons/fa";
 import { BsClouds } from "react-icons/bs";
-import Recomendation from "./Recomendation";
 import mapWeatherToIcon from "../utils/mapWeatherToIcon";
 
 const Card = () => {
@@ -147,10 +146,9 @@ const Card = () => {
             </div>
           </div>
           <div className={styles.weatherIcon}>
-            {/* //TODO : Replace icons with fontawesome icons or weather icons */}
             <img srcSet="" src={`${icon}`} alt={`weather icon`} />
 
-            <div className={styles.recommendation}>
+            {/* <div className={styles.recommendation}>
               {cityWeather?.list[0].weather[0].description === "light rain" ? (
                 <Recomendation
                   children={
@@ -170,7 +168,8 @@ const Card = () => {
               ) : (
                 ""
               )}
-            </div>
+            </div> */}
+            {/* //Todo => will add recomendation according to the weather conditions */}
           </div>
           <div className={darkMode ? styles.wdDarkMode : styles.wdLightMode}>
             <h1 className={styles.countryStyle}>{cityWeather?.city.name}</h1>
