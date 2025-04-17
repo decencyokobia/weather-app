@@ -1,4 +1,8 @@
-import { ReactNode, useState } from "react";
+import { useState } from "react";
+
+interface City {
+  name: string;
+}
 
 interface Clouds {
   all: number;
@@ -20,15 +24,21 @@ export interface Weather {
   id: number;
   description: string;
   icon: string;
+  main: string;
+}
+
+interface List {
+  main: Main;
+  weather: Weather[];
+  clouds: Clouds;
+  wind: Wind;
+  dt_txt: string;
+  id: number;
 }
 
 export interface AllWeatherDetails {
-  name: string;
-  weather: Weather[];
-  weatherSymbol: ReactNode;
-  main: Main;
-  wind: Wind;
-  clouds: Clouds;
+  city: City;
+ list: List[];
 }
 
 const useWeather = () => {

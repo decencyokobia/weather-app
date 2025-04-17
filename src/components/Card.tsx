@@ -6,6 +6,12 @@ import { IoMoonSharp } from "react-icons/io5";
 import { IoMdSunny } from "react-icons/io";
 import useWeather from "../hooks/useWeather";
 import create, { CanceledError } from "../services/weatherService";
+import ForcastCards from "./ForcastCards";
+import { WiHumidity } from "react-icons/wi";
+import { FaWind } from "react-icons/fa";
+import { BsClouds } from "react-icons/bs";
+import Recomendation from "./Recomendation";
+import mapWeatherToIcon from "../utils/mapWeatherToIcon";
 
 const Card = () => {
   const {
@@ -21,7 +27,12 @@ const Card = () => {
     toggleMode,
   } = useWeather();
 
-  const today = new Date();
+  const date = new Date();
+  const today = date.getDate();
+  const month = date.toLocaleDateString("en-En", { month: "long" });
+
+  let condition = cityWeather && cityWeather.list[0].weather[0].main;
+  let icon = condition ? `src/SVG/${mapWeatherToIcon(condition)}` : "";
 
   useEffect(() => {
     setIsLoading(true);
@@ -31,6 +42,7 @@ const Card = () => {
     request
       .then((res) => {
         setCityWeather(res.data);
+        console.log(res.data.list);
         setIsLoading(false);
       })
       .catch((err) => {
@@ -90,9 +102,6 @@ const Card = () => {
           <span className={styles.modeText}>{" Switch Mode"}</span>
         </div>
       </div>
-      <h4>
-        Date: {today.toLocaleDateString()} at {today.toLocaleTimeString()}
-      </h4>
       {isLoading && (
         <div className="d-flex align-items-center">
           <strong role="status" style={{ fontSize: "1.6rem", color: "green" }}>
@@ -118,35 +127,101 @@ const Card = () => {
               : styles.cardContainerLightMode
           }
         >
-          <div className={styles.imgContainer}>
-            <div className={styles.weatherIcon}>
-              <img
-                src={`https://openweathermap.org/img/wn/${cityWeather?.weather[0].icon}@2x.png`}
-                alt={`weather icon`}
-              />
-            </div>
+          <Input handleSubmission={newCity} />
+          <div className={styles.tempnConditionDisplay}>
             <div className={styles.tempContainer}>
               <span className={styles.temp}>
-                {cityWeather && cityWeather.main.temp
-                  ? Math.floor(cityWeather.main.temp)
+                {cityWeather && cityWeather.list[0].main.temp
+                  ? Math.floor(cityWeather.list[0].main.temp)
                   : ""}
               </span>
-              <span className={styles.unitDegree}>&deg;C</span>
+              <span className={styles.unitDegree}>&deg;</span>
+            </div>
+            <div className={styles.weatherDescription}>
+              <span className={styles.styleCondition}>
+                {cityWeather?.list[0].weather[0].main}
+              </span>
+              <span className={styles.styleDate}>
+                Today, {`${today} ${month}`}
+              </span>
             </div>
           </div>
-          <div className={styles.weatherDetails}>
-            <h1>{cityWeather?.name}</h1>
-            <h3>Condition: {cityWeather?.weather[0].description}</h3>
-            <h4>Feels like: {cityWeather?.main.feels_like}&deg;C</h4>
-            <h4>Humidity: {cityWeather?.main.humidity}%</h4>
-            <h4>Wind speed: {cityWeather?.wind.speed}m/s</h4>
-            <h4>Wind direction: {cityWeather?.wind.deg}&deg;</h4>
-            <h4>Clouds: {cityWeather?.clouds.all}%</h4>
-            <h4>Pressure: {cityWeather?.main.pressure} hPa</h4>
+          <div className={styles.weatherIcon}>
+            {/* //TODO : Replace icons with fontawesome icons or weather icons */}
+            <img
+              srcSet=""
+              src={`${icon}`}
+              alt={`weather icon`}
+              style={{ scale: 0.4 }}
+            />
+
+            <div className={styles.recommendation}>
+              {cityWeather?.list[0].weather[0].description === "light rain" ? (
+                <Recomendation
+                  children={
+                    <>
+                      <strong>Light Rain</strong>
+                      <p className={styles.recoInfo}>
+                        As is most likely to be a rainy day, don't leave the
+                        house without your umbrella, a jacket and cover up. As
+                        is most likely to be a rainy day, don't leave the house
+                        without your umbrella, a jacket and cover up. As is most
+                        likely to be a rainy day, don't leave the house without
+                        your umbrella, a jacket and cover up.{" "}
+                      </p>
+                    </>
+                  }
+                />
+              ) : (
+                ""
+              )}
+            </div>
+          </div>
+          <div className={darkMode ? styles.wdDarkMode : styles.wdLightMode}>
+            <h1 className={styles.countryStyle}>{cityWeather?.city.name}</h1>
+            <div className={styles.weatherDetailsItems}>
+              <div>
+                <h4 className={styles.wDicons}>
+                  <WiHumidity />
+                  Humidity
+                </h4>
+                <h4 className={styles.wDicons}>
+                  <FaWind />
+                  Wind speed
+                </h4>
+                <h4 className={styles.wDicons}>
+                  <BsClouds />
+                  Clouds
+                </h4>
+              </div>
+              <div>
+                <h4>:</h4>
+                <h4>:</h4>
+                <h4>:</h4>
+              </div>
+              <div>
+                <h4>{cityWeather?.list[0].main.humidity}%</h4>
+                <h4>{cityWeather?.list[0].wind.speed}m/s</h4>
+                <h4>{cityWeather?.list[0].clouds.all}%</h4>
+              </div>
+            </div>
+          </div>
+
+          <h2 className={styles.forcastText}>Forcast Report</h2>
+          <div className={styles.forcastHolder} key={cityWeather?.list[0].id}>
+            {cityWeather?.list.map((forecast) => (
+              <ForcastCards
+                forcastDate={forecast.dt_txt.substring(5, 10)}
+                time={forecast.dt_txt.substring(10, 16)}
+                temperature={Math.floor(forecast.main.temp)}
+                srcImg={`src/SVG/${mapWeatherToIcon(forecast.weather[0].main)}`}
+                altImg={"weather icon"}
+              />
+            ))}
           </div>
         </div>
       )}
-      <Input handleSubmission={newCity} />
+
       <footer className={styles.footer}>&copy;deelovestocode</footer>
     </div>
   );

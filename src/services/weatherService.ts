@@ -9,9 +9,9 @@ class WeatherService {
     }
     getData() {
         const controller = new AbortController();
-        
+        // forecast?q=london&appid=d4336ae6db8eb58d6605b1f0f34032f5    
  const request = apiClient
-      .get(`/weather?q=${this.city}&units=metric&appid=${apiKey}`, {
+      .get(`/forecast?q=${this.city}&units=metric&appid=${apiKey}`, {
         signal: controller.signal,
       })
 
