@@ -148,12 +148,7 @@ const Card = () => {
           </div>
           <div className={styles.weatherIcon}>
             {/* //TODO : Replace icons with fontawesome icons or weather icons */}
-            <img
-              srcSet=""
-              src={`${icon}`}
-              alt={`weather icon`}
-              style={{ scale: 0.4 }}
-            />
+            <img srcSet="" src={`${icon}`} alt={`weather icon`} />
 
             <div className={styles.recommendation}>
               {cityWeather?.list[0].weather[0].description === "light rain" ? (

@@ -154,9 +154,16 @@ p {
     display: flex;
     flex-direction: column;
     align-items: center;
-    margin-top: -5rem;
+    margin-top: -4rem;
     z-index: 999;
     height: 210px;
+    /* border: 1px red solid; */
+}
+
+.weatherIcon img {
+    max-width: 150px;
+    max-height: 150px;
+    width: 100%;
 }
 
 .recoInfo {
