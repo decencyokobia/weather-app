@@ -46,7 +46,7 @@ const Input = ({ handleSubmission }: Props) => {
             bottom: 0,
           }}
         >
-          <IoSearch size={25} color="blue" className={styles.searchIcon} />
+          <IoSearch size={25} color="black" className={styles.searchIcon} />
         </button>
       </fieldset>
       <div>
