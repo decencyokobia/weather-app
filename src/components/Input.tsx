@@ -57,13 +57,6 @@ const Input = ({ handleSubmission }: Props) => {
           <p className="text-danger">Must be at least 3 characters.</p>
         )}
       </div>
-      {/* <button
-        onClick={() => reset}
-        type="reset"
-        className="btn btn-danger mt-3 mx-2 btn-lg"
-      >
-        Clear
-      </button> */}
     </form>
   );
 };

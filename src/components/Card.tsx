@@ -5,80 +5,29 @@ import { FieldValues } from "react-hook-form";
 import { IoMoonSharp } from "react-icons/io5";
 import { IoMdSunny } from "react-icons/io";
 import useWeather from "../hooks/useWeather";
-import create, { CanceledError } from "../services/weatherService";
 import ForcastCards from "./ForcastCards";
 import { WiHumidity } from "react-icons/wi";
 import { FaWind } from "react-icons/fa";
 import { BsClouds } from "react-icons/bs";
 
 const Card = () => {
-  const {
-    city,
-    cityWeather,
-    darkMode,
-    error,
-    isLoading,
-    setCity,
-    setCityWeather,
-    setError,
-    setIsLoading,
-    toggleMode,
-  } = useWeather();
+  const { city, cityWeather, darkMode, error, isLoading, setCity, toggleMode } =
+    useWeather();
 
   const date = new Date();
   const today = date.getDate();
   const month = date.toLocaleDateString("en-En", { month: "long" });
-
-  useEffect(() => {
-    setIsLoading(true);
-
-    const { request, cancel } = create(city).getData();
-
-    request
-      .then((res) => {
-        setCityWeather(res.data);
-        console.log(res.data.list);
-        setIsLoading(false);
-      })
-      .catch((err) => {
-        if (err instanceof CanceledError) return;
-        if (err.message && err.message.includes("Network Error")) {
-          setError(
-            "There was a problem with the network. Please check your connection and try again."
-          );
-        } else if (
-          err.response &&
-          err.response.status === 404 &&
-          err.response.data &&
-          err.response.data.message.includes("city not found")
-        ) {
-          alert("City not found. Please make sure the city is correct.");
-        } else if (
-          err.response &&
-          err.response.status === 404 &&
-          err.response.data &&
-          err.response.data.message.includes("Internal error")
-        ) {
-          setError("Refresh Browser");
-        } else {
-          setError(`An error occurred: ${err.message}`);
-        }
-        setIsLoading(false);
-      });
-
-    return cancel;
-  }, [city]);
 
   const newCity = (data: FieldValues) => {
     setCity(data.city);
   };
 
   useEffect(() => {
-    localStorage.setItem("savedCity", JSON.stringify(city));
+    sessionStorage.setItem("savedCity", JSON.stringify(city));
   }, [city]);
 
   useEffect(() => {
-    localStorage.setItem("savedMode", JSON.stringify(darkMode));
+    sessionStorage.setItem("savedMode", JSON.stringify(darkMode));
   });
 
   return (
