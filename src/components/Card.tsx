@@ -9,6 +9,7 @@ import ForcastCards from "./ForcastCards";
 import { WiHumidity } from "react-icons/wi";
 import { FaWind } from "react-icons/fa";
 import { BsClouds } from "react-icons/bs";
+import Recommendations, { recommendations } from "./Recommendations";
 
 const Card = () => {
   const { city, cityWeather, darkMode, error, isLoading, setCity, toggleMode } =
@@ -91,34 +92,42 @@ const Card = () => {
             </div>
           </div>
           <div className={styles.weatherIcon}>
+            <div
+              className={
+                darkMode
+                  ? styles.recommendationsDarkMode
+                  : styles.recommendationsLightMode
+              }
+            >
+              <Recommendations>
+                <h4>
+                  {cityWeather.list[0].weather[0].main === "Clouds" &&
+                    recommendations.Clouds}
+
+                  {cityWeather.list[0].weather[0].main === "Rain" &&
+                    recommendations.Rain}
+
+                  {cityWeather.list[0].weather[0].main === "Clear" &&
+                    recommendations.Clear}
+                  {cityWeather.list[0].weather[0].main === "Drizzle" &&
+                    recommendations.Drizzle}
+                  {cityWeather.list[0].weather[0].main === "Mist" &&
+                    recommendations.Mist}
+                  {cityWeather.list[0].weather[0].main === "Snow" &&
+                    recommendations.Snow}
+                  {cityWeather.list[0].weather[0].main === "Thunderstorm" &&
+                    recommendations.Thunderstorm}
+                  {cityWeather.list[0].weather[0].main === "Wind" &&
+                    recommendations.Wind}
+                </h4>
+              </Recommendations>
+            </div>
+            {/* //Todo => make recomendations random according to the weather conditions */}
             <img
               srcSet=""
               src={`https://openweathermap.org/img/wn/${cityWeather.list[0].weather[0].icon}@2x.png`}
               alt={`weather icon`}
             />
-
-            {/* <div className={styles.recommendation}>
-              {cityWeather?.list[0].weather[0].description === "light rain" ? (
-                <Recomendation
-                  children={
-                    <>
-                      <strong>Light Rain</strong>
-                      <p className={styles.recoInfo}>
-                        As is most likely to be a rainy day, don't leave the
-                        house without your umbrella, a jacket and cover up. As
-                        is most likely to be a rainy day, don't leave the house
-                        without your umbrella, a jacket and cover up. As is most
-                        likely to be a rainy day, don't leave the house without
-                        your umbrella, a jacket and cover up.{" "}
-                      </p>
-                    </>
-                  }
-                />
-              ) : (
-                ""
-              )}
-            </div> */}
-            {/* //Todo => will add recomendation according to the weather conditions */}
           </div>
           <div className={darkMode ? styles.wdDarkMode : styles.wdLightMode}>
             <h1 className={styles.countryStyle}>{cityWeather?.city.name}</h1>

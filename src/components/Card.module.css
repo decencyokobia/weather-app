@@ -157,7 +157,20 @@ p {
     margin-top: -4rem;
     z-index: 999;
     height: 210px;
-    /* border: 1px red solid; */
+}
+
+.recommendationsLightMode {
+    border-radius: 1rem;
+    color: black;
+    cursor: pointer;
+}
+
+.recommendationsDarkMode {
+    border-radius: 1rem;
+    padding: 0.5rem;
+    color: white;
+    margin-bottom: -1rem;
+    cursor: pointer;
 }
 
 .weatherIcon img {
@@ -166,9 +179,6 @@ p {
     width: 100%;
 }
 
-.recoInfo {
-    font-size: 1rem;
-}
 
 .wdLightMode {
     display: grid;
