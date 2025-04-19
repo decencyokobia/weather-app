@@ -20,27 +20,27 @@ html {
 
 .bgLightMode {
     background-color: hsl(0, 0%, 93%);
-    padding: 1rem;
+    padding: 0.5rem;
     min-height: 100vh;
     overflow: hidden;
 }
 
 .bgDarkMode {
     background-color:hsl(0, 0%, 20%);
-    padding: 1rem;
+    padding: 0.5rem;
     color: white;
     min-height: 100vh;
     overflow: hidden;
 }
 
 .header {
-    font-size: 3rem;
+    font-size: 2.5rem;
 }
 
 .firstLetter {
     color:dodgerblue;
     font-weight: bolder;
-    font-size: 5rem;
+    font-size: 3rem;
 }
 
 h1 {
@@ -61,7 +61,7 @@ p {
     width: 90vw;
     height: 100vh;
     border-radius: 5rem;
-    margin: 20px auto 0;
+    margin: 5px auto 0;
     box-shadow: 0 0 5px 0 white;
     background-color: hsl(0, 0%, 80%);
     padding: 1rem;
@@ -73,7 +73,7 @@ p {
     width: 90vw;
     height: 100vh;
     border-radius: 5rem;
-    margin: 20px auto 0;
+    margin: 5px auto 0;
     box-shadow: 0 0 5px 0 white;
     background-color:hsl(0, 0%, 10%);
     padding: 1rem;
@@ -287,12 +287,12 @@ p {
         display: none;
     }
     .logoContainer {
-        margin-bottom: 2rem;
+        margin-bottom: 1rem;
     }
     .cardContainerLightMode {
-        margin-top: 30px;
+        margin-top: 5px;
     }
     .cardContainerDarkMode {
-        margin-top: 30px;
+        margin-top: 5px;
     }
 }
