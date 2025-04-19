@@ -40,9 +40,9 @@ const Card = () => {
         </h1>
         <div>
           {darkMode ? (
-            <IoMdSunny onClick={toggleMode} size={30} />
+            <IoMdSunny onClick={toggleMode} size={20} />
           ) : (
-            <IoMoonSharp size={30} onClick={toggleMode} />
+            <IoMoonSharp size={20} onClick={toggleMode} />
           )}
           <span className={styles.modeText}>{" Switch Mode"}</span>
         </div>
