@@ -169,7 +169,6 @@ const Card = () => {
                 </h4>
               </Recommendations>
             </div>
-            {/* //Todo => make recomendations random according to the weather conditions */}
             <img
               srcSet=""
               src={`https://openweathermap.org/img/wn/${cityWeather.list[0].weather[0].icon}@2x.png`}

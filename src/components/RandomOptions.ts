@@ -1,5 +1,5 @@
 export const randomOptions = {
-    "Clear": [
+  "Clear": [
       "Sun’s out—great day for a walk or picnic! 🌞",
       "Perfect weather to get some Vitamin D 🌻",
       "Sunglasses on, good vibes only 😎",
@@ -98,15 +98,13 @@ export const randomOptions = {
       "Stay calm and keep communication open 📞"
     ],
     "Wind": [
-  "It’s windy out there—secure loose items outdoors 💨",
-  "Avoid wearing flowy clothes that can flap too much 🧥😂",
-  "Might not be ideal for biking or outdoor workouts 🚴‍♂️🚫",
-  "Great day to fly a kite if it’s not too strong 🪁",
-  "Watch out for dust or debris being blown around 🌪️",
-  "Close windows to avoid things flying inside 🪟",
-  "Wind can dry your skin—stay moisturized and hydrated 💧"
+        "It’s windy out there—secure loose items outdoors 💨",
+        "Avoid wearing flowy clothes that can flap too much 🧥😂",
+        "Might not be ideal for biking or outdoor workouts 🚴‍♂️🚫",
+        "Great day to fly a kite if it’s not too strong 🪁",
+        "Watch out for dust or debris being blown around 🌪️",
+        "Close windows to avoid things flying inside 🪟",
+        "Wind can dry your skin—stay moisturized and hydrated 💧"
 ]
-
-
 
   };
