@@ -10,7 +10,7 @@ import { WiHumidity } from "react-icons/wi";
 import { FaWind } from "react-icons/fa";
 import { BsClouds } from "react-icons/bs";
 import Recommendations from "./Recommendations";
-import { randomOptions } from "./RandomOptions";
+import recommendation from "./RandomOptions";
 
 const Card = () => {
   const {
@@ -27,6 +27,7 @@ const Card = () => {
   const date = new Date();
   const today = date.getDate();
   const month = date.toLocaleDateString("en-En", { month: "long" });
+  const tip = recommendation();
 
   const newCity = (data: FieldValues) => {
     setCity(data.city);
@@ -106,72 +107,11 @@ const Card = () => {
               }
             >
               <Recommendations>
-                <h4>
-                  {cityWeather.list[0].weather[0].main === "Clouds" &&
-                    randomOptions.Clouds[
-                      Math.floor(Math.random() * randomOptions.Clouds.length)
-                    ]}
-
-                  {cityWeather.list[0].weather[0].main === "Rain" &&
-                    randomOptions.Rain[
-                      Math.floor(Math.random() * randomOptions.Rain.length)
-                    ]}
-
-                  {cityWeather.list[0].weather[0].main === "Clear" &&
-                    randomOptions.Clear[
-                      Math.floor(Math.random() * randomOptions.Clear.length)
-                    ]}
-                  {cityWeather.list[0].weather[0].main === "Drizzle" &&
-                    randomOptions.Drizzle[
-                      Math.floor(Math.random() * randomOptions.Drizzle.length)
-                    ]}
-                  {cityWeather.list[0].weather[0].main === "Mist" &&
-                    randomOptions.Mist[
-                      Math.floor(Math.random() * randomOptions.Mist.length)
-                    ]}
-                  {cityWeather.list[0].weather[0].main === "Snow" &&
-                    randomOptions.Snow[
-                      Math.floor(Math.random() * randomOptions.Snow.length)
-                    ]}
-                  {cityWeather.list[0].weather[0].main === "Thunderstorm" &&
-                    randomOptions.Thunderstorm[
-                      Math.floor(
-                        Math.random() * randomOptions.Thunderstorm.length
-                      )
-                    ]}
-                  {cityWeather.list[0].weather[0].main === "Wind" &&
-                    randomOptions.Wind[
-                      Math.floor(Math.random() * randomOptions.Wind.length)
-                    ]}
-                  {cityWeather.list[0].weather[0].main === "Dust" &&
-                    randomOptions.Dust[
-                      Math.floor(Math.random() * randomOptions.Dust.length)
-                    ]}
-                  {cityWeather.list[0].weather[0].main === "Fog" &&
-                    randomOptions.Fog[
-                      Math.floor(Math.random() * randomOptions.Fog.length)
-                    ]}
-                  {cityWeather.list[0].weather[0].main === "Haze" &&
-                    randomOptions.Fog[
-                      Math.floor(Math.random() * randomOptions.Fog.length)
-                    ]}
-                  {cityWeather.list[0].weather[0].main === "Sand" &&
-                    randomOptions.Sand[
-                      Math.floor(Math.random() * randomOptions.Sand.length)
-                    ]}
-                  {cityWeather.list[0].weather[0].main === "Smoke" &&
-                    randomOptions.Smoke[
-                      Math.floor(Math.random() * randomOptions.Smoke.length)
-                    ]}
-                  {cityWeather.list[0].weather[0].main === "Squall" &&
-                    randomOptions.Squall[
-                      Math.floor(Math.random() * randomOptions.Squall.length)
-                    ]}
-                  {cityWeather.list[0].weather[0].main === "Tornado" &&
-                    randomOptions.Thunderstorm[
-                      Math.floor(Math.random() * randomOptions.Tornado.length)
-                    ]}
-                </h4>
+                {tip ? (
+                  <h4>{tip}</h4>
+                ) : (
+                  <h4>Loading weather recommendation...</h4>
+                )}
               </Recommendations>
             </div>
             <img
