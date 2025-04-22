@@ -100,6 +100,7 @@ p {
     align-self: center;
     display: flex;
     overflow: hidden;
+    position: relative;
 }
 
 .inputField:focus {
@@ -107,10 +108,11 @@ p {
 }
 
 .errorMessage {
-    font-size: 1.65rem;
-    position: fixed;
-    top: 135px;
+    font-size: 1.5rem;
+    position: absolute;
+    top: 85px;
     color: red;
+    left: 25px;
 }
 
 .tempnConditionDisplay {
