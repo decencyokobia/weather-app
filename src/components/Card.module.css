@@ -65,6 +65,7 @@ p {
     box-shadow: 0 0 5px 0 white;
     background-color: hsl(0, 0%, 80%);
     padding: 1rem;
+    position: relative;
 }
 
 .cardContainerDarkMode {
@@ -77,6 +78,7 @@ p {
     box-shadow: 0 0 5px 0 white;
     background-color:hsl(0, 0%, 10%);
     padding: 1rem;
+    position: relative;
 }
 
 .inputContainer {
@@ -102,6 +104,13 @@ p {
 
 .inputField:focus {
     box-shadow: 0 0 10px 0 dodgerblue;
+}
+
+.errorMessage {
+    font-size: 1.65rem;
+    position: fixed;
+    top: 135px;
+    color: red;
 }
 
 .tempnConditionDisplay {

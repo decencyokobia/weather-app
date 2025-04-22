@@ -1,6 +1,7 @@
 import { useEffect, useState } from "react";
 import create, { CanceledError } from "../services/weatherService";
 
+
 interface City {
   name: string;
 }
@@ -43,6 +44,7 @@ export interface AllWeatherDetails {
 }
 
 const useWeather = () => {
+  
   const [darkMode, setDarkMode] = useState(()=> {
     const savedMode = localStorage.getItem('savedMode');
     return savedMode ? JSON.parse(savedMode) : false
@@ -82,7 +84,10 @@ const useWeather = () => {
           err.response.data &&
           err.response.data.message.includes("city not found")
         ) {
-          alert("City not found. Please make sure the city is correct.");
+          setError("City not found. Please make sure the city is correct.");
+          setTimeout(() => {
+            setError('');
+          }, 3000);
         } else if (
           err.response &&
           err.response.status === 404 &&

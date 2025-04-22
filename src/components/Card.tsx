@@ -60,11 +60,7 @@ const Card = () => {
           ></div>
         </div>
       )}
-      {error && (
-        <p className="text-danger">
-          Failed to fetch weather data, refresh your browser.
-        </p>
-      )}
+
       {cityWeather && (
         <div
           className={
@@ -74,6 +70,7 @@ const Card = () => {
           }
         >
           <Input handleSubmission={newCity} />
+          <div className={styles.errorMessage}>{error}</div>
           <div className={styles.tempnConditionDisplay}>
             <div className={styles.tempContainer}>
               <span className={styles.temp}>
