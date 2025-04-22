@@ -13,8 +13,16 @@ import Recommendations from "./Recommendations";
 import { randomOptions } from "./RandomOptions";
 
 const Card = () => {
-  const { city, cityWeather, darkMode, error, isLoading, setCity, toggleMode } =
-    useWeather();
+  const {
+    city,
+    cityWeather,
+    darkMode,
+    error,
+    isLoading,
+    cityNotFound,
+    setCity,
+    toggleMode,
+  } = useWeather();
 
   const date = new Date();
   const today = date.getDate();
@@ -60,7 +68,7 @@ const Card = () => {
           ></div>
         </div>
       )}
-
+      {error && <p className="text-danger">{error}</p>}
       {cityWeather && (
         <div
           className={
@@ -70,7 +78,7 @@ const Card = () => {
           }
         >
           <Input handleSubmission={newCity} />
-          <div className={styles.errorMessage}>{error}</div>
+          <div className={styles.errorMessage}>{cityNotFound}</div>
           <div className={styles.tempnConditionDisplay}>
             <div className={styles.tempContainer}>
               <span className={styles.temp}>

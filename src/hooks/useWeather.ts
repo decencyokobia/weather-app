@@ -51,6 +51,7 @@ const useWeather = () => {
   });
   const [isLoading, setIsLoading] = useState(false);
   const [error, setError] = useState<string>("");
+  const [cityNotFound, setCityNotFound] = useState<string>('');
   const [city, setCity] = useState(() => {
     const savedCity = localStorage.getItem('savedCity');
     return savedCity ? JSON.parse(savedCity) : ['London'];
@@ -84,10 +85,10 @@ const useWeather = () => {
           err.response.data &&
           err.response.data.message.includes("city not found")
         ) {
-          setError("City not found. Please make sure the city is correct.");
+          setCityNotFound("City not found. Please make sure the city is correct.");
           setTimeout(() => {
-            setError('');
-          }, 3000);
+            setCityNotFound('');
+          }, 2000);
         } else if (
           err.response &&
           err.response.status === 404 &&
@@ -105,7 +106,7 @@ const useWeather = () => {
   }, [city]);
 
 
-  return { darkMode, setDarkMode, toggleMode, isLoading, setIsLoading , error, setError, city, setCity, cityWeather, setCityWeather};
+  return { darkMode, setDarkMode, toggleMode, isLoading, setIsLoading , error, setError, city, setCity, cityWeather, setCityWeather, cityNotFound};
 };
 
 export default useWeather;
